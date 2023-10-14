@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  main:
+    build: .
+    container_name: redirector
+    ports:
+      - 80:80
+    volumes:
+      - "./config.json:/app/config.json"
+   
+    restart: unless-stopped

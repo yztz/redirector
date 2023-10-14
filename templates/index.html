@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domain Redirect Rules</title>
+</head>
+<body>
+    <h1>Domain Redirect Rules</h1>
+    <form method="POST" action="/add_rule">
+        <label for="domain">Domain:</label>
+        <input type="text" name="domain" required>
+        <label for="destination">Destination URL:</label>
+        <input type="text" name="destination" required>
+        <button type="submit">Add Rule</button>
+    </form>
+    <h2>Current Rules</h2>
+    <ul>
+        {% for domain, destination in redirect_rules.items() %}
+            <li>
+                <a href="http://{{domain}}" target="_blank">{{ domain }}</a> -> {{ destination }}
+                <a href="/remove_rule/{{ domain }}">Remove</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
